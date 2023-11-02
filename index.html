@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  
+  <div id="root">
+    <script>
+      const root = document.getElementById("root");
+      const xhr = new XMLHttpRequest();
+      const _URL = "https://pokeapi.co/api/v2/pokemon/ditto";
+      xhr.open("GET", _URL);
+      xhr.send();
+      xhr.addEventListener("load", () => {
+        const _pokemonData = JSON.parse(xhr.response);
+        console.log("첨보는 응답 뭔지 조회해보기 : ", _pokemonData)
+        const h1 = document.getElement("h1");
+        h1.textContent = _pokemonData.name;
+        root.appendChild(h1);
+      })
+    </script>
+  </div>
 </body>
+
 </html>
